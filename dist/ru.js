@@ -133,13 +133,15 @@ var NAME = (function () {
     )
   }
 
-  init(defaultConverter, { path: '/' });
+  var api = init(defaultConverter, { path: '/' });
 
   //const Cookies = require('js-cookie');
 
+
   function main() {
-    console.log('version ' + version);
-    let c = Cookies.get();
+    var api$1 = "oooooh";
+    console.log('version ' + version + api$1);
+    let c = api.get();
     console.log('cookie ' + c);
   }
 
