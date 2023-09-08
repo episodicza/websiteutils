@@ -21,3 +21,4 @@ $(function(){
     saveTracking("rx_click_id", true, sparams);
     saveTracking("source", true, sparams);
 });
+console.log("It Works")
