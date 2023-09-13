@@ -1,6 +1,6 @@
 {
   "name": "websiteutils",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Episodic website scripts",
   "main": "index.js",
   "browser": "dist/bundle.js",
@@ -22,5 +22,8 @@
     "@rollup/plugin-terser": "^0.4.3",
     "js-cookie": "^3.0.5",
     "rollup": "^3.29.1"
+  },
+  "dependencies": {
+    "intl-tel-input": "^18.2.1"
   }
 }
