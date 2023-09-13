@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 
 const searchParams = new URLSearchParams(window.location.search);
-const hostname = 'episodic.co.za';
+const hostname = window.location.hostname.includes('webflow') ? window.location.hostname : 'episodic.co.za'
 
 export function saveTrackingCode(key, sessionOnly=false, prefix='eps_') {
     const val = searchParams.get(key);
