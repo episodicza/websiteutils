@@ -1,6 +1,6 @@
 {
   "name": "websiteutils",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Episodic website scripts",
   "main": "index.js",
   "browser": "dist/bundle.js",
