@@ -1,6 +1,14 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 
+const terserOptions = {
+  mangle: {
+    reserved: [
+      "Webflow"
+    ]
+  }
+}
+
 export default [{
   input: 'src/tracking.js',
   output: [{
@@ -12,6 +20,17 @@ export default [{
     format: 'iife',
     name: 'episodicTracking',
     plugins: [terser()]
+  }],
+  plugins: [nodeResolve()]
+}, {
+  input: 'src/tabanchors.js',
+  output: [{
+    file: 'dist/tabanchors.js',
+    format: 'iife',
+  }, {
+    file: 'dist/tabanchors.min.js',
+    format: 'iife',
+    plugins: [terser(terserOptions)]
   }],
   plugins: [nodeResolve()]
 }, {

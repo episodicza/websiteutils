@@ -36,4 +36,3 @@ export function getTrackingCode(key, prefix='eps_') {
     };
     return val;
 }
-
