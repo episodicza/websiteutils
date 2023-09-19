@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 const searchParams = new URLSearchParams(window.location.search);
 const hostname = window.location.hostname.includes('webflow') ? window.location.hostname : 'episodic.co.za'
 
-export function saveTrackingCode(key, sessionOnly=false, prefix='eps_') {
+export function saveCode(key, sessionOnly=false, prefix='eps_') {
     const val = searchParams.get(key);
     if (val) {
         const config = {
@@ -20,12 +20,7 @@ export function saveTrackingCode(key, sessionOnly=false, prefix='eps_') {
     } 
 }
 
-// Get the value of a tracking code from the following places (in order)
-// - URL search params
-// - Cookies
-// - Session storage
-// Returns null if not found
-export function getTrackingCode(key, prefix='eps_') {
+export function getCode(key, prefix='eps_') {
     let val = searchParams.get(key);
     if (val == null) {
         val = sessionStorage.getItem(prefix + key)

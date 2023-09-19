@@ -1,9 +1,8 @@
 {
   "name": "websiteutils",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Episodic website scripts",
   "main": "index.js",
-  "browser": "dist/bundle.js",
   "scripts": {
     "build": "rollup --config"
   },
@@ -13,17 +12,11 @@
   },
   "author": "Will van der Leij",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/episodicza/websiteutils/issues"
-  },
   "homepage": "https://github.com/episodicza/websiteutils#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.2.1",
     "@rollup/plugin-terser": "^0.4.3",
     "js-cookie": "^3.0.5",
     "rollup": "^3.29.1"
-  },
-  "dependencies": {
-    "intl-tel-input": "^18.2.1"
   }
 }

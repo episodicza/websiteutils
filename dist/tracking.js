@@ -136,7 +136,7 @@ var episodicTracking = (function (exports) {
   const searchParams = new URLSearchParams(window.location.search);
   const hostname = window.location.hostname.includes('webflow') ? window.location.hostname : 'episodic.co.za';
 
-  function saveTrackingCode(key, sessionOnly=false, prefix='eps_') {
+  function saveCode(key, sessionOnly=false, prefix='eps_') {
       const val = searchParams.get(key);
       if (val) {
           const config = {
@@ -152,12 +152,7 @@ var episodicTracking = (function (exports) {
       } 
   }
 
-  // Get the value of a tracking code from the following places (in order)
-  // - URL search params
-  // - Cookies
-  // - Session storage
-  // Returns null if not found
-  function getTrackingCode(key, prefix='eps_') {
+  function getCode(key, prefix='eps_') {
       let val = searchParams.get(key);
       if (val == null) {
           val = sessionStorage.getItem(prefix + key);
@@ -167,8 +162,8 @@ var episodicTracking = (function (exports) {
       }    return val;
   }
 
-  exports.getTrackingCode = getTrackingCode;
-  exports.saveTrackingCode = saveTrackingCode;
+  exports.getCode = getCode;
+  exports.saveCode = saveCode;
 
   return exports;
 
