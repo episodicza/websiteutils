@@ -1,4 +1,4 @@
-var episodicTracking = (function (exports) {
+var epsTracking = (function (exports) {
   'use strict';
 
   /*! js-cookie v3.0.5 | MIT */
@@ -136,9 +136,11 @@ var episodicTracking = (function (exports) {
   const searchParams = new URLSearchParams(window.location.search);
   const hostname = window.location.hostname.includes('webflow') ? window.location.hostname : 'episodic.co.za';
 
-  function saveCode(key, sessionOnly=false, prefix='eps_') {
-      const val = searchParams.get(key);
-      if (val) {
+  function saveCode(key, value=null, sessionOnly=false, prefix='eps_') {
+      if (value == null) {
+          value = searchParams.get(key);
+      }
+      if (value) {
           const config = {
               domain: hostname,
               path: '/',
@@ -147,8 +149,8 @@ var episodicTracking = (function (exports) {
           };
           if (!sessionOnly) {
               config.expires = 7;
-          }        api.set(prefix + key, val, config);
-          sessionStorage.setItem(prefix + key, val);
+          }        api.set(prefix + key, value, config);
+          sessionStorage.setItem(prefix + key, value);
       } 
   }
 

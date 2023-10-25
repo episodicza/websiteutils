@@ -4,7 +4,7 @@ import terser from '@rollup/plugin-terser';
 const terserOptions = {
   mangle: {
     reserved: [
-      "Webflow"
+      "Webflow", "jQuery"
     ]
   }
 }
@@ -14,12 +14,12 @@ export default [{
   output: [{
     file: 'dist/tracking.js',
     format: 'iife',
-    name: 'episodicTracking'
+    name: 'epsTracking'
   }, {
     file: 'dist/tracking.min.js',
     format: 'iife',
-    name: 'episodicTracking',
-    plugins: [terser()]
+    name: 'epsTracking',
+    plugins: [terser(terserOptions)]
   }],
   plugins: [nodeResolve()]
 }, {
@@ -43,7 +43,7 @@ export default [{
     file: 'dist/forms.min.js',
     format: 'iife',
     name: 'epsForms',
-    plugins: [terser()]
+    plugins: [terser(terserOptions)]
   }],
   plugins: [nodeResolve()]
 }];
