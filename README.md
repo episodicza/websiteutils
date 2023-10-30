@@ -1,6 +1,19 @@
 # websiteutils
 Utility scripts for Episodic Website
 
+## Webflow tab anchors
+Add a <body> script for each page that has a tab element that you want to be able to switch tabs to using a URL parameter. This script looks for a ?tab=xyz parameter and then switches to the tab page that has an ID of xyz. It needs to run on page load so that the click handler will process.
+
+```html
+<script>
+$(function(){
+  const tabName = new URLSearchParams(window.location.search).get("tab");
+  if (tabName){ $('#' + tabName).triggerHandler('click'); }    
+});
+</script>
+```
+
+
 ## Using forms.js
 
 ```html
