@@ -5,7 +5,7 @@ var epsForms = (function (exports) {
     const event = {
       event: "form_submission",
       formId: form.attr('id'),
-      formType: form.data('type') || 'form'
+      formType: form.data('type') || 'lead'
     };
     if (event.formType === 'lead') {
       event.formProduct = form.data('product') || null;
@@ -83,24 +83,31 @@ var epsForms = (function (exports) {
           body: JSON.stringify(data)
         }).then(response => {
           //TODO: check response.ok ?
+          if (response.ok) {
+            gtmFormEvent(data, _form);
+            if (successHandler) {
+              try { successHandler(data); } catch (e) { console.log(e); }
+            }
 
-          gtmFormEvent(data, _form);
-          if (successHandler) {
-            try { successHandler(data); } catch (e) { console.log(e); }
-          }
-
-          const successRedirect = _form.attr("redirect") || _form.data("redirect") || null;
-          if (successRedirect) {
-            window.location.href = successRedirect;
+            const successRedirect = _form.attr("redirect") || _form.data("redirect") || null;
+            if (successRedirect) {
+              window.location.href = successRedirect;
+            } else {
+              _form.hide();
+              failBlock.hide();
+              doneBlock.show();
+              $([document.documentElement, document.body]).animate({
+                scrollTop: doneBlock.offset().top - 250,
+              }, 300);
+            }
+            submitBtn.prop("disabled", false).css("cursor", "default");
           } else {
-            _form.hide();
-            failBlock.hide();
-            doneBlock.show();
-            $([document.documentElement, document.body]).animate({
-              scrollTop: doneBlock.offset().top - 250,
-            }, 300);
+            console.log(response.status, response.statusText);
+            _form.show();
+            failBlock.show();
+            doneBlock.hide();
+            submitBtn.prop("disabled", false).css("cursor", "default");  
           }
-          submitBtn.prop("disabled", false).css("cursor", "default");
         }).catch(error => {
           console.log(error);
           _form.show();
