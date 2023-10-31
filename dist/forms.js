@@ -8,7 +8,7 @@ var epsForms = (function (exports) {
       formType: form.data('type') || 'lead'
     };
     if (event.formType === 'lead') {
-      event.formProduct = form.data('product') || null;
+      event.formProduct = data.fields.product || form.data('product') || null;
       event.emailAddress = data.fields.email || null;
       event.phoneNumber = data.fields.phone_e164 || data.fields.phone || null;
       event.firstName = data.fields.first_name || data.fields.firstName || null;
